@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:termo/components/letter_display.dart';
+import 'package:termo/controllers/letter_display_controller.dart';
+import 'package:termo/controllers/letter_row_controller.dart';
 
-class LetterRow extends StatelessWidget {
+class LetterRow extends StatefulWidget {
+  final LetterRowController letterRowController;
 
-  const LetterRow({super.key});
+  const LetterRow({super.key, required this.letterRowController});
 
+  @override
+  State<LetterRow> createState() => _LetterRowState();
+}
+
+class _LetterRowState extends State<LetterRow> {
   List<LetterDisplay> getLetterDisplays() {
     List<LetterDisplay> displays = [];
     for (var i = 0; i < 5; i++) {
-      displays.add(const LetterDisplay());
+      LetterDisplayController letterDisplayController = LetterDisplayController();
+      widget.letterRowController.letterDisplayControllers.add(letterDisplayController);
+      displays.add(LetterDisplay(letterDisplayController: letterDisplayController,));
     }
 
     return displays;

@@ -20,7 +20,7 @@ class _KeyboardKeyState extends State<KeyboardKey> {
       child: Stack(children: [
         ElevatedButton(
           onPressed: () {
-            widget.keyboardController.printLetter(widget.letter);
+            widget.keyboardController.pressKey(widget.letter);
           },
           child: Container(),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:termo/components/game_board.dart';
+import 'package:termo/controllers/game_board_controller.dart';
 
 class DailyMode extends StatelessWidget {
   const DailyMode({super.key});
@@ -8,7 +9,7 @@ class DailyMode extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      child: const GameBoard(),
+      child: GameBoard(gameBoardController: GameBoardController(),),
     );
   }
 }

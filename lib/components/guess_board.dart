@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:termo/components/letter_row.dart';
+import 'package:termo/controllers/guess_board_controller.dart';
+import 'package:termo/controllers/letter_row_controller.dart';
 
 class GuessBoard extends StatefulWidget {
-
-  const GuessBoard({super.key});
+  final GuessBoardController guessBoardController;
+  const GuessBoard({super.key, required this.guessBoardController});
 
   @override
   State<GuessBoard> createState() => _GuessBoardState();
 }
 
 class _GuessBoardState extends State<GuessBoard> {
-
   getLetterRows() {
     letterRows = [];
     for (var i = 0; i < 6; i++) {
-      letterRows.add(const LetterRow());
+      LetterRowController letterRowController = LetterRowController();
+      widget.guessBoardController.letterRowControllers.add(letterRowController);
+      letterRows.add(LetterRow(letterRowController: letterRowController));
     }
   }
 
